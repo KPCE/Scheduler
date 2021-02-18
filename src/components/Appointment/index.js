@@ -6,10 +6,11 @@ import Empty from "./Empty"
 
 
 export default function Appointment(props) {
+  console.log("this is what I'm looking for", props)
   return (
     <article className="appointment">
       <h2>{props.time}</h2>
-        {props.interview ? <Show student={props.student} interviewer={props.interviewer}/> : <Empty />}
+        {props.interview ? <Show student={props.interview.student} interviewer={props.interviewer}/> : <Empty />}
 
     </article>
   )
