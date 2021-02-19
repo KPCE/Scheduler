@@ -32,3 +32,23 @@ export function getInterview(state, interview) {
   return interviewData;
 
 }
+
+
+export function getInterviewersForDay(state, day) {
+  const interviewers = [];
+  if (!state.days.length) {
+    return interviewers;
+  }
+  
+  const filteredDay = state.days.filter(dayz => dayz.name === day);
+  // console.log(interviewers)
+  if (!filteredDay.length) {
+    return interviewers;
+  }
+  console.log(filteredDay[0])
+  filteredDay[0].interviewers.forEach((appointment) => {
+    interviewers.push(state.interviewers[appointment])
+  })
+
+  return interviewers;
+}

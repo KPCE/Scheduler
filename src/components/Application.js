@@ -4,7 +4,7 @@ import "components/Application.scss";
 import React, { useState, useEffect } from "react";
 import "components/Appointment"
 import Appointment from "components/Appointment";
-import {getAppointmentsForDay, getInterview} from "../helpers/selectors"
+import {getAppointmentsForDay, getInterview, getInterviewersForDay} from "../helpers/selectors"
 const axios = require('axios').default;
 
 
@@ -18,18 +18,24 @@ export default function Application(props) {
     appointments: {},
     interviewers: {}
   });
-  const dailyAppointments = getAppointmentsForDay(state, state.day)//remove state from state.day?
-  console.log(dailyAppointments)
+  const dailyAppointments = getAppointmentsForDay(state, state.day)
+  // console.log("dailyAppointments", dailyAppointments)
+  const interviewers = getInterviewersForDay(state, state.day)
 
   const schedule = dailyAppointments.map(appointment => {
-    const interview = getInterview(state, appointment.interview);
+    
+    // console.log("interviewers", interviewers)
+    // console.log("appointment", appointment)
+    //console.log("interview in application", interview)
     return (
     <Appointment 
+      {...appointment}  
       key = {appointment.id} 
-      interview = {interview}
+      interview = {getInterview(state, appointment.interview)}
       id = {appointment.id}
       time = {appointment.time}
-      {...appointment} 
+      interviewers = {interviewers}
+      //interviewer = {appointment.interview ? interviewers[appointment.id].name : null}
     />
     );
     })
@@ -58,7 +64,7 @@ export default function Application(props) {
       //console.log(state)
     }, []);
     
-  console.log(state)
+  // console.log(state)
   //console.log(day)
   return (
     <main className="layout">
