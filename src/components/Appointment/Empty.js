@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.scss"
 
 export default function Empty(props) {
 
-  const onAdd = function () {
+  // const onAdd = function () {
 
-  }
+  // }
 
   return (
     <main className="appointment__add">

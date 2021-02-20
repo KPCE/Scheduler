@@ -1,5 +1,5 @@
 import React from "react";
-import className from "classnames";
+// import className from "classnames";
 import "components/InterviewerList.scss";
 import InterviewerListItem from "components/InterviewerListItem"
 
@@ -16,7 +16,7 @@ import InterviewerListItem from "components/InterviewerListItem"
 // setInterviewer:function - sets the interviewer upon selection
 
 export default function InterviewerList(props) {
-  console.log(props)
+  //console.log(props)
   const interviewerList = props.interviewers.map(value => (
     <InterviewerListItem 
       key = {value.id}

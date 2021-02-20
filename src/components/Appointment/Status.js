@@ -4,7 +4,7 @@ import "./styles.scss"
 export default function Status(props) {
 
   let message = function() {
-    return "Deleting";
+    return props.message;
   }
 
   return (

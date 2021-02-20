@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-const axios = require('axios').default;
+// import React, { useState, useEffect } from "react";
+// const axios = require('axios').default;
 
 export function getAppointmentsForDay(state, day) {
   const appointments = [];
@@ -45,7 +45,7 @@ export function getInterviewersForDay(state, day) {
   if (!filteredDay.length) {
     return interviewers;
   }
-  console.log(filteredDay[0])
+  //console.log(filteredDay[0])
   filteredDay[0].interviewers.forEach((appointment) => {
     interviewers.push(state.interviewers[appointment])
   })
