@@ -17,6 +17,7 @@ export default function Appointment(props) {
   const SAVING = "SAVING";
   const DELETING = "DELETING";
   const CONFIRM = "CONFIRM";
+  const EDIT = "EDIT";
 
   function save(name, interviewer) {
     const interview = {
@@ -42,6 +43,7 @@ export default function Appointment(props) {
   );
   //console.log("this is what I'm looking for", props.interview)
   console.log("MODE: ", mode);
+  console.log("PROPS: ", props)
   return (
     <article className="appointment">
       <h2>{props.time}</h2>
@@ -57,12 +59,22 @@ export default function Appointment(props) {
           />}
         {mode === SHOW && (
           <Show
-            student={props.interview.student}
-            interviewer={props.interview.interviewer}
-            onDelete={() => transition(CONFIRM)}
+          student={props.interview.student}
+          interviewer={props.interview.interviewer}
+          onDelete={() => transition(CONFIRM)}
+          onEdit={() => transition(EDIT)}
           />
         )}
         {mode === CREATE && <Form onCancel= {() => back()} interviewers={props.interviewers} onSave={save} />}
+        {mode === EDIT && 
+          <Form 
+          onCancel= {() => back()} 
+          interviewers={props.interviewers} 
+          onSave={save} 
+          
+          name={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+          />}
     </article>
   )
 }
