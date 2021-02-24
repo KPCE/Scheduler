@@ -6,7 +6,7 @@ export default function Header(props) {
 
   }
 
-  const message = "Could not delete appointment";
+  const message = "Could not save or delete appointment, please try again";
 
   return (
     <main className="appointment__card appointment__card--error">

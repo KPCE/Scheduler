@@ -1,5 +1,6 @@
 import React from "react";
 // import className from "classnames";
+import PropTypes from 'prop-types';
 import "components/InterviewerList.scss";
 import InterviewerListItem from "components/InterviewerListItem"
 
@@ -15,9 +16,16 @@ import InterviewerListItem from "components/InterviewerListItem"
 // selected:boolean - to determine if an interview is selected or not
 // setInterviewer:function - sets the interviewer upon selection
 
+
+
+
+
 export default function InterviewerList(props) {
   //console.log(props)
-  const interviewerList = props.interviewers.map(value => (
+  const { interviewers } = props
+  InterviewerList.propTypes = {interviewers: PropTypes.array.isRequired};
+
+  const interviewerList = interviewers.map(value => (
     <InterviewerListItem 
       key = {value.id}
       name={value.name} 

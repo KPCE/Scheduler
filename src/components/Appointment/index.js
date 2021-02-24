@@ -47,10 +47,10 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
   //console.log("this is what I'm looking for", props.interview)
-  console.log("MODE: ", mode);
-  console.log("PROPS: ", props)
+  // console.log("MODE: ", mode);
+  // console.log("PROPS: ", props)
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <h2>{props.time}</h2>
         {/* {props.interview ? <Show student={props.interview.student} interviewer={props.interviewer}/> : <Empty />} */}
         {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
