@@ -8,7 +8,7 @@ afterEach(cleanup);
 
 describe("Application", () => {
   it("defaults to Monday and changes the schedule when a new day is selected", async () => {
-    const { getByText, click } = render(<Application />);
+    const { getByText } = render(<Application />);
     await waitForElement(() => getByText("Monday"))
     .then(() => {
       fireEvent.click(getByText("Tuesday"));
@@ -18,7 +18,7 @@ describe("Application", () => {
   });
 
   it("Loads data, books an interview and reduces the spots remaining for the first day by 1", async () => {
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"))
     const day = getAllByTestId(container, "day").find(day => queryByText(day, "Monday"));
     const appointments = getAllByTestId(container, "appointment");
@@ -41,7 +41,7 @@ describe("Application", () => {
 
   it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async () => {
 
-  const { container, debug } = render(<Application />);
+  const { container } = render(<Application />);
   await waitForElement(() => getByText(container, "Archie Cohen"))
   const appointment = getAllByTestId(container, "appointment")[1]
   fireEvent.click(getByAltText(appointment, "Delete"))
@@ -56,7 +56,7 @@ describe("Application", () => {
   });
 
   it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"))
     const day = getAllByTestId(container, "day").find(day => queryByText(day, "Monday"));
     const appointment = getAllByTestId(container, "appointment")[1]
@@ -75,9 +75,8 @@ describe("Application", () => {
   
   it("shows the save error when failing to save an appointment", async () => {
     axios.put.mockRejectedValueOnce();
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"))
-    const day = getAllByTestId(container, "day").find(day => queryByText(day, "Monday"));
     const appointments = getAllByTestId(container, "appointment");
     const appointment = appointments[0];
     fireEvent.click(getByAltText(appointment, "Add"));
@@ -96,7 +95,7 @@ describe("Application", () => {
 
   it("shows the delete error when failing to delete an existing appointment", async () => {
     axios.delete.mockRejectedValueOnce();
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"))
     const appointment = getAllByTestId(container, "appointment")[1]
     fireEvent.click(getByAltText(appointment, "Delete"))

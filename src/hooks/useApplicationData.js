@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 const axios = require('axios').default;
 
 export default function useApplicationData(initial) {
