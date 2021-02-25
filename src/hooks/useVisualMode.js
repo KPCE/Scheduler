@@ -1,7 +1,8 @@
 import { useState } from "react";
 
+//function for transitioning and tracking state changes
+
 export default function useVisualMode(initial) {
-  // const [mode, setMode] = useState(initial)
   const [history, setHistory] = useState([initial]);
 
   const transition = function (newMode, replace = false) {
@@ -21,7 +22,6 @@ export default function useVisualMode(initial) {
   const back = function () {
     setHistory(prev => {
       if (history.length === 1 ) {
-        //console.log(history)
         const newHistory = [...prev];
         return newHistory
       }
