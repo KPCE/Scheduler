@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles.scss"
-// import Header from "./header"
 import Show from "./Show"
 import Empty from "./Empty"
 import Form from "./Form"
@@ -27,7 +26,6 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    //console.log("props", props)
     transition(SAVING)
     props.bookInterview(props.id, interview)
     .then(() => transition(SHOW))
@@ -41,23 +39,19 @@ export default function Appointment(props) {
     .catch(error => transition(ERROR_DELETE, true));
   }
 
-
-  // const fake = []
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
-  //console.log("this is what I'm looking for", props.interview)
-  // console.log("MODE: ", mode);
-  // console.log("PROPS: ", props)
+
+
   return (
     <article className="appointment" data-testid="appointment">
       <h2>{props.time}</h2>
-        {/* {props.interview ? <Show student={props.interview.student} interviewer={props.interviewer}/> : <Empty />} */}
         {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
         {mode === SAVING && <Status message="Saving..." />}
         {mode === DELETING && <Status message="Deleting..." />}
         {mode === ERROR_SAVE && <Error message="Could not save appointment" onClose={back}/>}
-        {mode === ERROR_DELETE && <Error message="Could not delete appintment" onClose={back}/>}
+        {mode === ERROR_DELETE && <Error message="Could not delete appointment" onClose={back}/>}
         {mode === CONFIRM && 
           <Confirm 
           message="Are you sure you want to delete this appointment?" 

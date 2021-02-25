@@ -1,11 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.scss"
 export default function Header(props) {
-
-  const onClose = function() {
-
-  }
-
   const message = "Could not save or delete appointment, please try again";
 
   return (

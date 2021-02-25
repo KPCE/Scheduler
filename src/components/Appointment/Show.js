@@ -10,15 +10,6 @@ import "./styles.scss";
 
 export default function Show(props) {
 
-  // const onEdit = function () {
-
-  // }
-
-  // const onDelete = function () {
-
-  // }
-
-//console.log("showprops", props)
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">

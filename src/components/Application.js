@@ -6,13 +6,8 @@ import "components/Appointment"
 import Appointment from "components/Appointment";
 import useApplicationData from "../hooks/useApplicationData"
 import {getAppointmentsForDay, getInterview, getInterviewersForDay} from "../helpers/selectors"
-const axios = require('axios').default;
-
 
 export default function Application(props) {
-  // const [day, setDay] = useState("Monday");
-  // const [days, setDays] = useState([]);
-
   const {
     state,
     setDay,
@@ -20,12 +15,8 @@ export default function Application(props) {
     cancelInterview
   } = useApplicationData();
 
-
-  
-
   const interviewers = getInterviewersForDay(state, state.day)
   const dailyAppointments = getAppointmentsForDay(state, state.day)
-  // console.log("dailyAppointments", dailyAppointments)
 
   const schedule = dailyAppointments.map(appointment => {
     return (
@@ -42,11 +33,6 @@ export default function Application(props) {
     );
     })
 
-
-    
-    
-  // console.log(state)
-  //console.log(day)
   return (
     <main className="layout">
       <section className="sidebar">

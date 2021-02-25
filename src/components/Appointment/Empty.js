@@ -3,10 +3,6 @@ import "./styles.scss"
 
 export default function Empty(props) {
 
-  // const onAdd = function () {
-
-  // }
-
   return (
     <main className="appointment__add">
       <img

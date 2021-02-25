@@ -15,14 +15,14 @@ export default function Form(props) {
     props.onCancel();
   }
 
-  // const save = function() {
-  //   props.onSave(name, interviewer)
-  // }
-
   const [error, setError] = useState("");
   function validate() {
     if (name === "") {
       setError("Student name cannot be blank");
+      return;
+    }
+    if (!interviewer) {
+      setError("Interviewer cannot be blank");
       return;
     }
     setError("")
@@ -36,7 +36,6 @@ export default function Form(props) {
         <form autoComplete="off" onSubmit={event => event.preventDefault()}>
           <input
             className="appointment__create-input text--semi-bold"
-            //name="name"//does this do anything?
             type="text"
             placeholder="Enter Student Name"
             value={name}
